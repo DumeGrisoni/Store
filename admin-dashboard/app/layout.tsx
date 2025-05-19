@@ -4,6 +4,8 @@ import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { frFR } from '@clerk/localizations';
 
+import { ModalProvider } from '@/providers/modal-provider';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -28,6 +30,7 @@ export default function RootLayout({
     <ClerkProvider localization={frFR}>
       <html lang="fr">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <ModalProvider />
           {children}
         </body>
       </html>
