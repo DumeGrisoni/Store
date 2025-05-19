@@ -18,9 +18,13 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import toast from 'react-hot-toast';
+import { redirect } from 'next/navigation';
 
 const formSchema = z.object({
-  name: z.string().min(1),
+  name: z.string().min(1, {
+    message: 'Nom de la boutique requis',
+  }),
 });
 
 export const StoreModal = () => {
@@ -39,9 +43,11 @@ export const StoreModal = () => {
     try {
       setLoading(true);
       const response = await axios.post('/api/stores', values);
-      console.log('resultat', response.data);
+      toast.success('Boutique créee');
+      redirect(`/${response.data.id}`);
     } catch (error) {
       console.log(error);
+      toast.error("Une erreur s'est produite");
     } finally {
       setLoading(false);
     }
@@ -70,7 +76,7 @@ export const StoreModal = () => {
                       disabled={loading}
                     />
                   </FormControl>
-                  <FormMessage>
+                  <FormMessage lang="fr">
                     {form.formState.errors.name?.message}
                   </FormMessage>
                 </FormItem>

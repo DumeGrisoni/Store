@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { frFR } from '@clerk/localizations';
 
 import { ModalProvider } from '@/providers/modal-provider';
+import { ToastProvider } from '@/providers/toast-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,6 +31,7 @@ export default function RootLayout({
     <ClerkProvider localization={frFR}>
       <html lang="fr">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <ToastProvider />
           <ModalProvider />
           {children}
         </body>

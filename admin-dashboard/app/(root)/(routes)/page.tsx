@@ -14,11 +14,7 @@ const SetupPage = () => {
     }
   }, [isOpen, onOpen]);
 
-  return (
-    <div className="p-4 bg-black text-white h-screen  text-3xl">
-      Administration de NovaMarket
-    </div>
-  );
+  return null;
 };
 
 export default SetupPage;
