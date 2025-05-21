@@ -45,11 +45,11 @@ const BillboardsForm: React.FC<BillboardPageProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Modifier le panneau' : 'Créer un panneau';
+  const title = initialData ? 'Modifier le bandeau' : 'Créer un bandeau';
   const description = initialData
-    ? 'Modifier le panneau existant de la boutique'
-    : 'Créer un nouveau panneau pour la boutique';
-  const toastMessage = initialData ? 'Panneau mis à jour' : 'Panneau créé';
+    ? 'Modifier le bandeau de la boutique'
+    : 'Créer un nouveau bandeau pour la boutique';
+  const toastMessage = initialData ? 'Bandeau mis à jour' : 'Bandeau créé';
   const action = initialData ? 'Modifier' : 'Créer';
 
   const form = useForm<BillboardFormValues>({
@@ -64,11 +64,15 @@ const BillboardsForm: React.FC<BillboardPageProps> = ({ initialData }) => {
     try {
       setLoading(true);
       if (initialData) {
-        await axios.patch(`/api/${params.storeId}/${params.billboardId}`, data);
+        await axios.patch(
+          `/api/${params.storeId}/billboards/${params.billboardId}`,
+          data
+        );
       } else {
         await axios.post(`/api/${params.storeId}/billboards`, data);
       }
       router.refresh();
+      router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Une erreur s'est produite");
@@ -86,7 +90,7 @@ const BillboardsForm: React.FC<BillboardPageProps> = ({ initialData }) => {
       );
       router.refresh();
       router.push('/');
-      toast.success('Panneau supprimé');
+      toast.success('Bandeau supprimé');
     } catch (error) {
       toast.error("Assurez-vous d'avoir supprimé toutes les categories");
       console.log(error);
@@ -151,7 +155,7 @@ const BillboardsForm: React.FC<BillboardPageProps> = ({ initialData }) => {
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Titre du panneau"
+                      placeholder="Titre du bandeau"
                       {...field}
                     />
                   </FormControl>
