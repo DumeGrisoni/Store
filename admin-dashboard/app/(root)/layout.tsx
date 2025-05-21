@@ -10,7 +10,6 @@ const SetupLayout = async ({ children }: { children: React.ReactNode }) => {
   if (!userId) {
     redirect('/sign-in');
   }
-
   const store = await prismadb.store.findFirst({
     where: {
       userId,

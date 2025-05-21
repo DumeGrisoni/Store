@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Store = $Result.DefaultSelection<Prisma.$StorePayload>
+/**
+ * Model BillBoard
+ * 
+ */
+export type BillBoard = $Result.DefaultSelection<Prisma.$BillBoardPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get store(): Prisma.StoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.billBoard`: Exposes CRUD operations for the **BillBoard** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BillBoards
+    * const billBoards = await prisma.billBoard.findMany()
+    * ```
+    */
+  get billBoard(): Prisma.BillBoardDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Store: 'Store'
+    Store: 'Store',
+    BillBoard: 'BillBoard'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "store"
+      modelProps: "store" | "billBoard"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.StoreCountArgs<ExtArgs>
             result: $Utils.Optional<StoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      BillBoard: {
+        payload: Prisma.$BillBoardPayload<ExtArgs>
+        fields: Prisma.BillBoardFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BillBoardFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BillBoardFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          findFirst: {
+            args: Prisma.BillBoardFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BillBoardFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          findMany: {
+            args: Prisma.BillBoardFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>[]
+          }
+          create: {
+            args: Prisma.BillBoardCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          createMany: {
+            args: Prisma.BillBoardCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BillBoardCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>[]
+          }
+          delete: {
+            args: Prisma.BillBoardDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          update: {
+            args: Prisma.BillBoardUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          deleteMany: {
+            args: Prisma.BillBoardDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BillBoardUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BillBoardUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>[]
+          }
+          upsert: {
+            args: Prisma.BillBoardUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillBoardPayload>
+          }
+          aggregate: {
+            args: Prisma.BillBoardAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBillBoard>
+          }
+          groupBy: {
+            args: Prisma.BillBoardGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BillBoardGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BillBoardCountArgs<ExtArgs>
+            result: $Utils.Optional<BillBoardCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     store?: StoreOmit
+    billBoard?: BillBoardOmit
   }
 
   /* Types for Logging */
@@ -863,6 +954,36 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type StoreCountOutputType
+   */
+
+  export type StoreCountOutputType = {
+    billboards: number
+  }
+
+  export type StoreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    billboards?: boolean | StoreCountOutputTypeCountBillboardsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StoreCountOutputType
+     */
+    select?: StoreCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountBillboardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillBoardWhereInput
+  }
 
 
   /**
@@ -1033,6 +1154,8 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    billboards?: boolean | Store$billboardsArgs<ExtArgs>
+    _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["store"]>
 
   export type StoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1060,10 +1183,18 @@ export namespace Prisma {
   }
 
   export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["store"]>
+  export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    billboards?: boolean | Store$billboardsArgs<ExtArgs>
+    _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type StoreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $StorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Store"
-    objects: {}
+    objects: {
+      billboards: Prisma.$BillBoardPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -1464,6 +1595,7 @@ export namespace Prisma {
    */
   export interface Prisma__StoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    billboards<T extends Store$billboardsArgs<ExtArgs> = {}>(args?: Subset<T, Store$billboardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1515,6 +1647,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * Filter, which Store to fetch.
      */
     where: StoreWhereUniqueInput
@@ -1533,6 +1669,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * Filter, which Store to fetch.
      */
     where: StoreWhereUniqueInput
@@ -1550,6 +1690,10 @@ export namespace Prisma {
      * Omit specific fields from the Store
      */
     omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
     /**
      * Filter, which Store to fetch.
      */
@@ -1599,6 +1743,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * Filter, which Store to fetch.
      */
     where?: StoreWhereInput
@@ -1647,6 +1795,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * Filter, which Stores to fetch.
      */
     where?: StoreWhereInput
@@ -1689,6 +1841,10 @@ export namespace Prisma {
      * Omit specific fields from the Store
      */
     omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
     /**
      * The data needed to create a Store.
      */
@@ -1737,6 +1893,10 @@ export namespace Prisma {
      * Omit specific fields from the Store
      */
     omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
     /**
      * The data needed to update a Store.
      */
@@ -1804,6 +1964,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * The filter to search for the Store to update in case it exists.
      */
     where: StoreWhereUniqueInput
@@ -1830,6 +1994,10 @@ export namespace Prisma {
      */
     omit?: StoreOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+    /**
      * Filter which Store to delete.
      */
     where: StoreWhereUniqueInput
@@ -1850,6 +2018,30 @@ export namespace Prisma {
   }
 
   /**
+   * Store.billboards
+   */
+  export type Store$billboardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    where?: BillBoardWhereInput
+    orderBy?: BillBoardOrderByWithRelationInput | BillBoardOrderByWithRelationInput[]
+    cursor?: BillBoardWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BillBoardScalarFieldEnum | BillBoardScalarFieldEnum[]
+  }
+
+  /**
    * Store without action
    */
   export type StoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1861,6 +2053,1081 @@ export namespace Prisma {
      * Omit specific fields from the Store
      */
     omit?: StoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BillBoard
+   */
+
+  export type AggregateBillBoard = {
+    _count: BillBoardCountAggregateOutputType | null
+    _min: BillBoardMinAggregateOutputType | null
+    _max: BillBoardMaxAggregateOutputType | null
+  }
+
+  export type BillBoardMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    label: string | null
+    imageUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillBoardMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    label: string | null
+    imageUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillBoardCountAggregateOutputType = {
+    id: number
+    storeId: number
+    label: number
+    imageUrl: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BillBoardMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    label?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillBoardMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    label?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillBoardCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    label?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BillBoardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillBoard to aggregate.
+     */
+    where?: BillBoardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillBoards to fetch.
+     */
+    orderBy?: BillBoardOrderByWithRelationInput | BillBoardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BillBoardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillBoards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillBoards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BillBoards
+    **/
+    _count?: true | BillBoardCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BillBoardMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BillBoardMaxAggregateInputType
+  }
+
+  export type GetBillBoardAggregateType<T extends BillBoardAggregateArgs> = {
+        [P in keyof T & keyof AggregateBillBoard]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBillBoard[P]>
+      : GetScalarType<T[P], AggregateBillBoard[P]>
+  }
+
+
+
+
+  export type BillBoardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillBoardWhereInput
+    orderBy?: BillBoardOrderByWithAggregationInput | BillBoardOrderByWithAggregationInput[]
+    by: BillBoardScalarFieldEnum[] | BillBoardScalarFieldEnum
+    having?: BillBoardScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BillBoardCountAggregateInputType | true
+    _min?: BillBoardMinAggregateInputType
+    _max?: BillBoardMaxAggregateInputType
+  }
+
+  export type BillBoardGroupByOutputType = {
+    id: string
+    storeId: string
+    label: string
+    imageUrl: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BillBoardCountAggregateOutputType | null
+    _min: BillBoardMinAggregateOutputType | null
+    _max: BillBoardMaxAggregateOutputType | null
+  }
+
+  type GetBillBoardGroupByPayload<T extends BillBoardGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BillBoardGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BillBoardGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BillBoardGroupByOutputType[P]>
+            : GetScalarType<T[P], BillBoardGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BillBoardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    label?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billBoard"]>
+
+  export type BillBoardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    label?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billBoard"]>
+
+  export type BillBoardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    label?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billBoard"]>
+
+  export type BillBoardSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    label?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BillBoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "label" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["billBoard"]>
+  export type BillBoardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type BillBoardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type BillBoardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $BillBoardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BillBoard"
+    objects: {
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      label: string
+      imageUrl: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["billBoard"]>
+    composites: {}
+  }
+
+  type BillBoardGetPayload<S extends boolean | null | undefined | BillBoardDefaultArgs> = $Result.GetResult<Prisma.$BillBoardPayload, S>
+
+  type BillBoardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BillBoardFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BillBoardCountAggregateInputType | true
+    }
+
+  export interface BillBoardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BillBoard'], meta: { name: 'BillBoard' } }
+    /**
+     * Find zero or one BillBoard that matches the filter.
+     * @param {BillBoardFindUniqueArgs} args - Arguments to find a BillBoard
+     * @example
+     * // Get one BillBoard
+     * const billBoard = await prisma.billBoard.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BillBoardFindUniqueArgs>(args: SelectSubset<T, BillBoardFindUniqueArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BillBoard that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BillBoardFindUniqueOrThrowArgs} args - Arguments to find a BillBoard
+     * @example
+     * // Get one BillBoard
+     * const billBoard = await prisma.billBoard.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BillBoardFindUniqueOrThrowArgs>(args: SelectSubset<T, BillBoardFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillBoard that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardFindFirstArgs} args - Arguments to find a BillBoard
+     * @example
+     * // Get one BillBoard
+     * const billBoard = await prisma.billBoard.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BillBoardFindFirstArgs>(args?: SelectSubset<T, BillBoardFindFirstArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillBoard that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardFindFirstOrThrowArgs} args - Arguments to find a BillBoard
+     * @example
+     * // Get one BillBoard
+     * const billBoard = await prisma.billBoard.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BillBoardFindFirstOrThrowArgs>(args?: SelectSubset<T, BillBoardFindFirstOrThrowArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BillBoards that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BillBoards
+     * const billBoards = await prisma.billBoard.findMany()
+     * 
+     * // Get first 10 BillBoards
+     * const billBoards = await prisma.billBoard.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const billBoardWithIdOnly = await prisma.billBoard.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BillBoardFindManyArgs>(args?: SelectSubset<T, BillBoardFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BillBoard.
+     * @param {BillBoardCreateArgs} args - Arguments to create a BillBoard.
+     * @example
+     * // Create one BillBoard
+     * const BillBoard = await prisma.billBoard.create({
+     *   data: {
+     *     // ... data to create a BillBoard
+     *   }
+     * })
+     * 
+     */
+    create<T extends BillBoardCreateArgs>(args: SelectSubset<T, BillBoardCreateArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BillBoards.
+     * @param {BillBoardCreateManyArgs} args - Arguments to create many BillBoards.
+     * @example
+     * // Create many BillBoards
+     * const billBoard = await prisma.billBoard.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BillBoardCreateManyArgs>(args?: SelectSubset<T, BillBoardCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BillBoards and returns the data saved in the database.
+     * @param {BillBoardCreateManyAndReturnArgs} args - Arguments to create many BillBoards.
+     * @example
+     * // Create many BillBoards
+     * const billBoard = await prisma.billBoard.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BillBoards and only return the `id`
+     * const billBoardWithIdOnly = await prisma.billBoard.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BillBoardCreateManyAndReturnArgs>(args?: SelectSubset<T, BillBoardCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BillBoard.
+     * @param {BillBoardDeleteArgs} args - Arguments to delete one BillBoard.
+     * @example
+     * // Delete one BillBoard
+     * const BillBoard = await prisma.billBoard.delete({
+     *   where: {
+     *     // ... filter to delete one BillBoard
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BillBoardDeleteArgs>(args: SelectSubset<T, BillBoardDeleteArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BillBoard.
+     * @param {BillBoardUpdateArgs} args - Arguments to update one BillBoard.
+     * @example
+     * // Update one BillBoard
+     * const billBoard = await prisma.billBoard.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BillBoardUpdateArgs>(args: SelectSubset<T, BillBoardUpdateArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BillBoards.
+     * @param {BillBoardDeleteManyArgs} args - Arguments to filter BillBoards to delete.
+     * @example
+     * // Delete a few BillBoards
+     * const { count } = await prisma.billBoard.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BillBoardDeleteManyArgs>(args?: SelectSubset<T, BillBoardDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillBoards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BillBoards
+     * const billBoard = await prisma.billBoard.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BillBoardUpdateManyArgs>(args: SelectSubset<T, BillBoardUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillBoards and returns the data updated in the database.
+     * @param {BillBoardUpdateManyAndReturnArgs} args - Arguments to update many BillBoards.
+     * @example
+     * // Update many BillBoards
+     * const billBoard = await prisma.billBoard.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BillBoards and only return the `id`
+     * const billBoardWithIdOnly = await prisma.billBoard.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BillBoardUpdateManyAndReturnArgs>(args: SelectSubset<T, BillBoardUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BillBoard.
+     * @param {BillBoardUpsertArgs} args - Arguments to update or create a BillBoard.
+     * @example
+     * // Update or create a BillBoard
+     * const billBoard = await prisma.billBoard.upsert({
+     *   create: {
+     *     // ... data to create a BillBoard
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BillBoard we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BillBoardUpsertArgs>(args: SelectSubset<T, BillBoardUpsertArgs<ExtArgs>>): Prisma__BillBoardClient<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BillBoards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardCountArgs} args - Arguments to filter BillBoards to count.
+     * @example
+     * // Count the number of BillBoards
+     * const count = await prisma.billBoard.count({
+     *   where: {
+     *     // ... the filter for the BillBoards we want to count
+     *   }
+     * })
+    **/
+    count<T extends BillBoardCountArgs>(
+      args?: Subset<T, BillBoardCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BillBoardCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BillBoard.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BillBoardAggregateArgs>(args: Subset<T, BillBoardAggregateArgs>): Prisma.PrismaPromise<GetBillBoardAggregateType<T>>
+
+    /**
+     * Group by BillBoard.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillBoardGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BillBoardGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BillBoardGroupByArgs['orderBy'] }
+        : { orderBy?: BillBoardGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BillBoardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBillBoardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BillBoard model
+   */
+  readonly fields: BillBoardFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BillBoard.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BillBoardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BillBoard model
+   */
+  interface BillBoardFieldRefs {
+    readonly id: FieldRef<"BillBoard", 'String'>
+    readonly storeId: FieldRef<"BillBoard", 'String'>
+    readonly label: FieldRef<"BillBoard", 'String'>
+    readonly imageUrl: FieldRef<"BillBoard", 'String'>
+    readonly createdAt: FieldRef<"BillBoard", 'DateTime'>
+    readonly updatedAt: FieldRef<"BillBoard", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BillBoard findUnique
+   */
+  export type BillBoardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter, which BillBoard to fetch.
+     */
+    where: BillBoardWhereUniqueInput
+  }
+
+  /**
+   * BillBoard findUniqueOrThrow
+   */
+  export type BillBoardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter, which BillBoard to fetch.
+     */
+    where: BillBoardWhereUniqueInput
+  }
+
+  /**
+   * BillBoard findFirst
+   */
+  export type BillBoardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter, which BillBoard to fetch.
+     */
+    where?: BillBoardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillBoards to fetch.
+     */
+    orderBy?: BillBoardOrderByWithRelationInput | BillBoardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillBoards.
+     */
+    cursor?: BillBoardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillBoards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillBoards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillBoards.
+     */
+    distinct?: BillBoardScalarFieldEnum | BillBoardScalarFieldEnum[]
+  }
+
+  /**
+   * BillBoard findFirstOrThrow
+   */
+  export type BillBoardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter, which BillBoard to fetch.
+     */
+    where?: BillBoardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillBoards to fetch.
+     */
+    orderBy?: BillBoardOrderByWithRelationInput | BillBoardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillBoards.
+     */
+    cursor?: BillBoardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillBoards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillBoards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillBoards.
+     */
+    distinct?: BillBoardScalarFieldEnum | BillBoardScalarFieldEnum[]
+  }
+
+  /**
+   * BillBoard findMany
+   */
+  export type BillBoardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter, which BillBoards to fetch.
+     */
+    where?: BillBoardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillBoards to fetch.
+     */
+    orderBy?: BillBoardOrderByWithRelationInput | BillBoardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BillBoards.
+     */
+    cursor?: BillBoardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillBoards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillBoards.
+     */
+    skip?: number
+    distinct?: BillBoardScalarFieldEnum | BillBoardScalarFieldEnum[]
+  }
+
+  /**
+   * BillBoard create
+   */
+  export type BillBoardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BillBoard.
+     */
+    data: XOR<BillBoardCreateInput, BillBoardUncheckedCreateInput>
+  }
+
+  /**
+   * BillBoard createMany
+   */
+  export type BillBoardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BillBoards.
+     */
+    data: BillBoardCreateManyInput | BillBoardCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BillBoard createManyAndReturn
+   */
+  export type BillBoardCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * The data used to create many BillBoards.
+     */
+    data: BillBoardCreateManyInput | BillBoardCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillBoard update
+   */
+  export type BillBoardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BillBoard.
+     */
+    data: XOR<BillBoardUpdateInput, BillBoardUncheckedUpdateInput>
+    /**
+     * Choose, which BillBoard to update.
+     */
+    where: BillBoardWhereUniqueInput
+  }
+
+  /**
+   * BillBoard updateMany
+   */
+  export type BillBoardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BillBoards.
+     */
+    data: XOR<BillBoardUpdateManyMutationInput, BillBoardUncheckedUpdateManyInput>
+    /**
+     * Filter which BillBoards to update
+     */
+    where?: BillBoardWhereInput
+    /**
+     * Limit how many BillBoards to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillBoard updateManyAndReturn
+   */
+  export type BillBoardUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * The data used to update BillBoards.
+     */
+    data: XOR<BillBoardUpdateManyMutationInput, BillBoardUncheckedUpdateManyInput>
+    /**
+     * Filter which BillBoards to update
+     */
+    where?: BillBoardWhereInput
+    /**
+     * Limit how many BillBoards to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillBoard upsert
+   */
+  export type BillBoardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BillBoard to update in case it exists.
+     */
+    where: BillBoardWhereUniqueInput
+    /**
+     * In case the BillBoard found by the `where` argument doesn't exist, create a new BillBoard with this data.
+     */
+    create: XOR<BillBoardCreateInput, BillBoardUncheckedCreateInput>
+    /**
+     * In case the BillBoard was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BillBoardUpdateInput, BillBoardUncheckedUpdateInput>
+  }
+
+  /**
+   * BillBoard delete
+   */
+  export type BillBoardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
+    /**
+     * Filter which BillBoard to delete.
+     */
+    where: BillBoardWhereUniqueInput
+  }
+
+  /**
+   * BillBoard deleteMany
+   */
+  export type BillBoardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillBoards to delete
+     */
+    where?: BillBoardWhereInput
+    /**
+     * Limit how many BillBoards to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillBoard without action
+   */
+  export type BillBoardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillBoard
+     */
+    select?: BillBoardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillBoard
+     */
+    omit?: BillBoardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillBoardInclude<ExtArgs> | null
   }
 
 
@@ -1887,6 +3154,18 @@ export namespace Prisma {
   };
 
   export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
+
+
+  export const BillBoardScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    label: 'label',
+    imageUrl: 'imageUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BillBoardScalarFieldEnum = (typeof BillBoardScalarFieldEnum)[keyof typeof BillBoardScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1964,6 +3243,7 @@ export namespace Prisma {
     userId?: StringFilter<"Store"> | string
     createdAt?: DateTimeFilter<"Store"> | Date | string
     updatedAt?: DateTimeFilter<"Store"> | Date | string
+    billboards?: BillBoardListRelationFilter
   }
 
   export type StoreOrderByWithRelationInput = {
@@ -1972,6 +3252,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    billboards?: BillBoardOrderByRelationAggregateInput
   }
 
   export type StoreWhereUniqueInput = Prisma.AtLeast<{
@@ -1983,6 +3264,7 @@ export namespace Prisma {
     userId?: StringFilter<"Store"> | string
     createdAt?: DateTimeFilter<"Store"> | Date | string
     updatedAt?: DateTimeFilter<"Store"> | Date | string
+    billboards?: BillBoardListRelationFilter
   }, "id">
 
   export type StoreOrderByWithAggregationInput = {
@@ -2007,12 +3289,73 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Store"> | Date | string
   }
 
+  export type BillBoardWhereInput = {
+    AND?: BillBoardWhereInput | BillBoardWhereInput[]
+    OR?: BillBoardWhereInput[]
+    NOT?: BillBoardWhereInput | BillBoardWhereInput[]
+    id?: StringFilter<"BillBoard"> | string
+    storeId?: StringFilter<"BillBoard"> | string
+    label?: StringFilter<"BillBoard"> | string
+    imageUrl?: StringFilter<"BillBoard"> | string
+    createdAt?: DateTimeFilter<"BillBoard"> | Date | string
+    updatedAt?: DateTimeFilter<"BillBoard"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type BillBoardOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    label?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type BillBoardWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BillBoardWhereInput | BillBoardWhereInput[]
+    OR?: BillBoardWhereInput[]
+    NOT?: BillBoardWhereInput | BillBoardWhereInput[]
+    storeId?: StringFilter<"BillBoard"> | string
+    label?: StringFilter<"BillBoard"> | string
+    imageUrl?: StringFilter<"BillBoard"> | string
+    createdAt?: DateTimeFilter<"BillBoard"> | Date | string
+    updatedAt?: DateTimeFilter<"BillBoard"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id">
+
+  export type BillBoardOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    label?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BillBoardCountOrderByAggregateInput
+    _max?: BillBoardMaxOrderByAggregateInput
+    _min?: BillBoardMinOrderByAggregateInput
+  }
+
+  export type BillBoardScalarWhereWithAggregatesInput = {
+    AND?: BillBoardScalarWhereWithAggregatesInput | BillBoardScalarWhereWithAggregatesInput[]
+    OR?: BillBoardScalarWhereWithAggregatesInput[]
+    NOT?: BillBoardScalarWhereWithAggregatesInput | BillBoardScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BillBoard"> | string
+    storeId?: StringWithAggregatesFilter<"BillBoard"> | string
+    label?: StringWithAggregatesFilter<"BillBoard"> | string
+    imageUrl?: StringWithAggregatesFilter<"BillBoard"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BillBoard"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BillBoard"> | Date | string
+  }
+
   export type StoreCreateInput = {
     id?: string
     name: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    billboards?: BillBoardCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUncheckedCreateInput = {
@@ -2021,6 +3364,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    billboards?: BillBoardUncheckedCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUpdateInput = {
@@ -2029,6 +3373,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreUncheckedUpdateInput = {
@@ -2037,6 +3382,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUncheckedUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreCreateManyInput = {
@@ -2059,6 +3405,68 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardCreateInput = {
+    id?: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    store: StoreCreateNestedOneWithoutBillboardsInput
+  }
+
+  export type BillBoardUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillBoardUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutBillboardsNestedInput
+  }
+
+  export type BillBoardUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardCreateManyInput = {
+    id?: string
+    storeId: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillBoardUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2087,6 +3495,16 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type BillBoardListRelationFilter = {
+    every?: BillBoardWhereInput
+    some?: BillBoardWhereInput
+    none?: BillBoardWhereInput
+  }
+
+  export type BillBoardOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type StoreCountOrderByAggregateInput = {
@@ -2145,12 +3563,100 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type StoreScalarRelationFilter = {
+    is?: StoreWhereInput
+    isNot?: StoreWhereInput
+  }
+
+  export type BillBoardCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    label?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillBoardMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    label?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillBoardMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    label?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillBoardCreateNestedManyWithoutStoreInput = {
+    create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
+    createMany?: BillBoardCreateManyStoreInputEnvelope
+    connect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+  }
+
+  export type BillBoardUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
+    createMany?: BillBoardCreateManyStoreInputEnvelope
+    connect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type BillBoardUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
+    upsert?: BillBoardUpsertWithWhereUniqueWithoutStoreInput | BillBoardUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: BillBoardCreateManyStoreInputEnvelope
+    set?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    disconnect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    delete?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    connect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    update?: BillBoardUpdateWithWhereUniqueWithoutStoreInput | BillBoardUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: BillBoardUpdateManyWithWhereWithoutStoreInput | BillBoardUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: BillBoardScalarWhereInput | BillBoardScalarWhereInput[]
+  }
+
+  export type BillBoardUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
+    upsert?: BillBoardUpsertWithWhereUniqueWithoutStoreInput | BillBoardUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: BillBoardCreateManyStoreInputEnvelope
+    set?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    disconnect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    delete?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    connect?: BillBoardWhereUniqueInput | BillBoardWhereUniqueInput[]
+    update?: BillBoardUpdateWithWhereUniqueWithoutStoreInput | BillBoardUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: BillBoardUpdateManyWithWhereWithoutStoreInput | BillBoardUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: BillBoardScalarWhereInput | BillBoardScalarWhereInput[]
+  }
+
+  export type StoreCreateNestedOneWithoutBillboardsInput = {
+    create?: XOR<StoreCreateWithoutBillboardsInput, StoreUncheckedCreateWithoutBillboardsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutBillboardsInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type StoreUpdateOneRequiredWithoutBillboardsNestedInput = {
+    create?: XOR<StoreCreateWithoutBillboardsInput, StoreUncheckedCreateWithoutBillboardsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutBillboardsInput
+    upsert?: StoreUpsertWithoutBillboardsInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutBillboardsInput, StoreUpdateWithoutBillboardsInput>, StoreUncheckedUpdateWithoutBillboardsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2218,6 +3724,140 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BillBoardCreateWithoutStoreInput = {
+    id?: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillBoardUncheckedCreateWithoutStoreInput = {
+    id?: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillBoardCreateOrConnectWithoutStoreInput = {
+    where: BillBoardWhereUniqueInput
+    create: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput>
+  }
+
+  export type BillBoardCreateManyStoreInputEnvelope = {
+    data: BillBoardCreateManyStoreInput | BillBoardCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BillBoardUpsertWithWhereUniqueWithoutStoreInput = {
+    where: BillBoardWhereUniqueInput
+    update: XOR<BillBoardUpdateWithoutStoreInput, BillBoardUncheckedUpdateWithoutStoreInput>
+    create: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput>
+  }
+
+  export type BillBoardUpdateWithWhereUniqueWithoutStoreInput = {
+    where: BillBoardWhereUniqueInput
+    data: XOR<BillBoardUpdateWithoutStoreInput, BillBoardUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type BillBoardUpdateManyWithWhereWithoutStoreInput = {
+    where: BillBoardScalarWhereInput
+    data: XOR<BillBoardUpdateManyMutationInput, BillBoardUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type BillBoardScalarWhereInput = {
+    AND?: BillBoardScalarWhereInput | BillBoardScalarWhereInput[]
+    OR?: BillBoardScalarWhereInput[]
+    NOT?: BillBoardScalarWhereInput | BillBoardScalarWhereInput[]
+    id?: StringFilter<"BillBoard"> | string
+    storeId?: StringFilter<"BillBoard"> | string
+    label?: StringFilter<"BillBoard"> | string
+    imageUrl?: StringFilter<"BillBoard"> | string
+    createdAt?: DateTimeFilter<"BillBoard"> | Date | string
+    updatedAt?: DateTimeFilter<"BillBoard"> | Date | string
+  }
+
+  export type StoreCreateWithoutBillboardsInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StoreUncheckedCreateWithoutBillboardsInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StoreCreateOrConnectWithoutBillboardsInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutBillboardsInput, StoreUncheckedCreateWithoutBillboardsInput>
+  }
+
+  export type StoreUpsertWithoutBillboardsInput = {
+    update: XOR<StoreUpdateWithoutBillboardsInput, StoreUncheckedUpdateWithoutBillboardsInput>
+    create: XOR<StoreCreateWithoutBillboardsInput, StoreUncheckedCreateWithoutBillboardsInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutBillboardsInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutBillboardsInput, StoreUncheckedUpdateWithoutBillboardsInput>
+  }
+
+  export type StoreUpdateWithoutBillboardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StoreUncheckedUpdateWithoutBillboardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardCreateManyStoreInput = {
+    id?: string
+    label: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillBoardUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillBoardUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
