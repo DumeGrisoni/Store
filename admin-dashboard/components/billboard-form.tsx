@@ -89,7 +89,7 @@ const BillboardsForm: React.FC<BillboardPageProps> = ({ initialData }) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push('/');
+      router.push(`${params.storeId}/billboards`);
       toast.success('Bandeau supprimé');
     } catch (error) {
       toast.error("Assurez-vous d'avoir supprimé toutes les categories");
