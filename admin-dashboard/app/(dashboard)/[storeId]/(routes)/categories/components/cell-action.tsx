@@ -12,13 +12,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { BillboardColumn } from './colomns';
+import { CategoryColumn } from './colomns';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import AlertModal from '@/components/modals/alert-modal';
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: CategoryColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -36,10 +36,10 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
       router.refresh();
-      router.push(`/${params.storeId}/billboards`);
-      toast.success('Bandeau supprimé');
+      router.push(`/${params.storeId}/categories`);
+      toast.success('Catégorie supprimé');
     } catch (error) {
       toast.error("Assurez-vous d'avoir supprimé toutes les categories");
       console.log(error);
@@ -70,7 +70,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/categories/${data.id}`)
             }
           >
             <Edit className="mr-2 h-4 w-4" />
