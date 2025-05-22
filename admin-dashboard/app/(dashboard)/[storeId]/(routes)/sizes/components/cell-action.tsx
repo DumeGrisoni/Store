@@ -12,13 +12,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { CategoryColumn } from './colomns';
+import { SizeColumn } from './colomns';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import AlertModal from '@/components/modals/alert-modal';
 
 interface CellActionProps {
-  data: CategoryColumn;
+  data: SizeColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -36,17 +36,16 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
       router.refresh();
-      toast.success('Catégorie supprimée');
+      router.push(`/${params.storeId}/sizes`);
+      toast.success('Taille supprimée');
     } catch (error) {
-      toast.error(
-        "Assurez-vous d'avoir supprimé toutes les produits de cette catégorie"
-      );
+      toast.error("Assurez-vous d'avoir supprimé tout les produits avant");
       console.log(error);
     } finally {
-      setOpen(false);
       setLoading(false);
+      setOpen(false);
     }
   };
 
@@ -70,9 +69,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <Separator className="mb-1" />
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() =>
-              router.push(`/${params.storeId}/categories/${data.id}`)
-            }
+            onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
             Modifier

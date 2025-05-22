@@ -28,6 +28,16 @@ export type BillBoard = $Result.DefaultSelection<Prisma.$BillBoardPayload>
  * 
  */
 export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
+ * Model Size
+ * 
+ */
+export type Size = $Result.DefaultSelection<Prisma.$SizePayload>
+/**
+ * Model Color
+ * 
+ */
+export type Color = $Result.DefaultSelection<Prisma.$ColorPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +193,26 @@ export class PrismaClient<
     * ```
     */
   get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.size`: Exposes CRUD operations for the **Size** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sizes
+    * const sizes = await prisma.size.findMany()
+    * ```
+    */
+  get size(): Prisma.SizeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.color`: Exposes CRUD operations for the **Color** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Colors
+    * const colors = await prisma.color.findMany()
+    * ```
+    */
+  get color(): Prisma.ColorDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +655,9 @@ export namespace Prisma {
   export const ModelName: {
     Store: 'Store',
     BillBoard: 'BillBoard',
-    Category: 'Category'
+    Category: 'Category',
+    Size: 'Size',
+    Color: 'Color'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "store" | "billBoard" | "category"
+      modelProps: "store" | "billBoard" | "category" | "size" | "color"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +902,154 @@ export namespace Prisma {
           }
         }
       }
+      Size: {
+        payload: Prisma.$SizePayload<ExtArgs>
+        fields: Prisma.SizeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SizeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SizeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          findFirst: {
+            args: Prisma.SizeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SizeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          findMany: {
+            args: Prisma.SizeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>[]
+          }
+          create: {
+            args: Prisma.SizeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          createMany: {
+            args: Prisma.SizeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SizeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>[]
+          }
+          delete: {
+            args: Prisma.SizeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          update: {
+            args: Prisma.SizeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          deleteMany: {
+            args: Prisma.SizeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SizeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SizeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>[]
+          }
+          upsert: {
+            args: Prisma.SizeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SizePayload>
+          }
+          aggregate: {
+            args: Prisma.SizeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSize>
+          }
+          groupBy: {
+            args: Prisma.SizeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SizeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SizeCountArgs<ExtArgs>
+            result: $Utils.Optional<SizeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Color: {
+        payload: Prisma.$ColorPayload<ExtArgs>
+        fields: Prisma.ColorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ColorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ColorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findFirst: {
+            args: Prisma.ColorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ColorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findMany: {
+            args: Prisma.ColorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          create: {
+            args: Prisma.ColorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          createMany: {
+            args: Prisma.ColorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ColorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          delete: {
+            args: Prisma.ColorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          update: {
+            args: Prisma.ColorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          deleteMany: {
+            args: Prisma.ColorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ColorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ColorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          upsert: {
+            args: Prisma.ColorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          aggregate: {
+            args: Prisma.ColorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateColor>
+          }
+          groupBy: {
+            args: Prisma.ColorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ColorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ColorCountArgs<ExtArgs>
+            result: $Utils.Optional<ColorCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1137,8 @@ export namespace Prisma {
     store?: StoreOmit
     billBoard?: BillBoardOmit
     category?: CategoryOmit
+    size?: SizeOmit
+    color?: ColorOmit
   }
 
   /* Types for Logging */
@@ -1053,11 +1235,15 @@ export namespace Prisma {
   export type StoreCountOutputType = {
     billboards: number
     categories: number
+    sizes: number
+    colors: number
   }
 
   export type StoreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     billboards?: boolean | StoreCountOutputTypeCountBillboardsArgs
     categories?: boolean | StoreCountOutputTypeCountCategoriesArgs
+    sizes?: boolean | StoreCountOutputTypeCountSizesArgs
+    colors?: boolean | StoreCountOutputTypeCountColorsArgs
   }
 
   // Custom InputTypes
@@ -1083,6 +1269,20 @@ export namespace Prisma {
    */
   export type StoreCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CategoryWhereInput
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountSizesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SizeWhereInput
+  }
+
+  /**
+   * StoreCountOutputType without action
+   */
+  export type StoreCountOutputTypeCountColorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorWhereInput
   }
 
 
@@ -1287,6 +1487,8 @@ export namespace Prisma {
     updatedAt?: boolean
     billboards?: boolean | Store$billboardsArgs<ExtArgs>
     categories?: boolean | Store$categoriesArgs<ExtArgs>
+    sizes?: boolean | Store$sizesArgs<ExtArgs>
+    colors?: boolean | Store$colorsArgs<ExtArgs>
     _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["store"]>
 
@@ -1318,6 +1520,8 @@ export namespace Prisma {
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     billboards?: boolean | Store$billboardsArgs<ExtArgs>
     categories?: boolean | Store$categoriesArgs<ExtArgs>
+    sizes?: boolean | Store$sizesArgs<ExtArgs>
+    colors?: boolean | Store$colorsArgs<ExtArgs>
     _count?: boolean | StoreCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type StoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1328,6 +1532,8 @@ export namespace Prisma {
     objects: {
       billboards: Prisma.$BillBoardPayload<ExtArgs>[]
       categories: Prisma.$CategoryPayload<ExtArgs>[]
+      sizes: Prisma.$SizePayload<ExtArgs>[]
+      colors: Prisma.$ColorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1731,6 +1937,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     billboards<T extends Store$billboardsArgs<ExtArgs> = {}>(args?: Subset<T, Store$billboardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillBoardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     categories<T extends Store$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, Store$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sizes<T extends Store$sizesArgs<ExtArgs> = {}>(args?: Subset<T, Store$sizesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    colors<T extends Store$colorsArgs<ExtArgs> = {}>(args?: Subset<T, Store$colorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2198,6 +2406,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Store.sizes
+   */
+  export type Store$sizesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    where?: SizeWhereInput
+    orderBy?: SizeOrderByWithRelationInput | SizeOrderByWithRelationInput[]
+    cursor?: SizeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SizeScalarFieldEnum | SizeScalarFieldEnum[]
+  }
+
+  /**
+   * Store.colors
+   */
+  export type Store$colorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    where?: ColorWhereInput
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    cursor?: ColorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
   }
 
   /**
@@ -4400,6 +4656,2148 @@ export namespace Prisma {
 
 
   /**
+   * Model Size
+   */
+
+  export type AggregateSize = {
+    _count: SizeCountAggregateOutputType | null
+    _min: SizeMinAggregateOutputType | null
+    _max: SizeMaxAggregateOutputType | null
+  }
+
+  export type SizeMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SizeMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SizeCountAggregateOutputType = {
+    id: number
+    storeId: number
+    name: number
+    value: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SizeMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SizeMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SizeCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SizeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Size to aggregate.
+     */
+    where?: SizeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sizes to fetch.
+     */
+    orderBy?: SizeOrderByWithRelationInput | SizeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SizeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sizes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sizes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Sizes
+    **/
+    _count?: true | SizeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SizeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SizeMaxAggregateInputType
+  }
+
+  export type GetSizeAggregateType<T extends SizeAggregateArgs> = {
+        [P in keyof T & keyof AggregateSize]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSize[P]>
+      : GetScalarType<T[P], AggregateSize[P]>
+  }
+
+
+
+
+  export type SizeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SizeWhereInput
+    orderBy?: SizeOrderByWithAggregationInput | SizeOrderByWithAggregationInput[]
+    by: SizeScalarFieldEnum[] | SizeScalarFieldEnum
+    having?: SizeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SizeCountAggregateInputType | true
+    _min?: SizeMinAggregateInputType
+    _max?: SizeMaxAggregateInputType
+  }
+
+  export type SizeGroupByOutputType = {
+    id: string
+    storeId: string
+    name: string
+    value: string
+    createdAt: Date
+    updatedAt: Date
+    _count: SizeCountAggregateOutputType | null
+    _min: SizeMinAggregateOutputType | null
+    _max: SizeMaxAggregateOutputType | null
+  }
+
+  type GetSizeGroupByPayload<T extends SizeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SizeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SizeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SizeGroupByOutputType[P]>
+            : GetScalarType<T[P], SizeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SizeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["size"]>
+
+  export type SizeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["size"]>
+
+  export type SizeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["size"]>
+
+  export type SizeSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SizeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "name" | "value" | "createdAt" | "updatedAt", ExtArgs["result"]["size"]>
+  export type SizeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type SizeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type SizeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $SizePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Size"
+    objects: {
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      name: string
+      value: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["size"]>
+    composites: {}
+  }
+
+  type SizeGetPayload<S extends boolean | null | undefined | SizeDefaultArgs> = $Result.GetResult<Prisma.$SizePayload, S>
+
+  type SizeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SizeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SizeCountAggregateInputType | true
+    }
+
+  export interface SizeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Size'], meta: { name: 'Size' } }
+    /**
+     * Find zero or one Size that matches the filter.
+     * @param {SizeFindUniqueArgs} args - Arguments to find a Size
+     * @example
+     * // Get one Size
+     * const size = await prisma.size.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SizeFindUniqueArgs>(args: SelectSubset<T, SizeFindUniqueArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Size that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SizeFindUniqueOrThrowArgs} args - Arguments to find a Size
+     * @example
+     * // Get one Size
+     * const size = await prisma.size.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SizeFindUniqueOrThrowArgs>(args: SelectSubset<T, SizeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Size that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeFindFirstArgs} args - Arguments to find a Size
+     * @example
+     * // Get one Size
+     * const size = await prisma.size.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SizeFindFirstArgs>(args?: SelectSubset<T, SizeFindFirstArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Size that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeFindFirstOrThrowArgs} args - Arguments to find a Size
+     * @example
+     * // Get one Size
+     * const size = await prisma.size.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SizeFindFirstOrThrowArgs>(args?: SelectSubset<T, SizeFindFirstOrThrowArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Sizes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sizes
+     * const sizes = await prisma.size.findMany()
+     * 
+     * // Get first 10 Sizes
+     * const sizes = await prisma.size.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sizeWithIdOnly = await prisma.size.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SizeFindManyArgs>(args?: SelectSubset<T, SizeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Size.
+     * @param {SizeCreateArgs} args - Arguments to create a Size.
+     * @example
+     * // Create one Size
+     * const Size = await prisma.size.create({
+     *   data: {
+     *     // ... data to create a Size
+     *   }
+     * })
+     * 
+     */
+    create<T extends SizeCreateArgs>(args: SelectSubset<T, SizeCreateArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Sizes.
+     * @param {SizeCreateManyArgs} args - Arguments to create many Sizes.
+     * @example
+     * // Create many Sizes
+     * const size = await prisma.size.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SizeCreateManyArgs>(args?: SelectSubset<T, SizeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sizes and returns the data saved in the database.
+     * @param {SizeCreateManyAndReturnArgs} args - Arguments to create many Sizes.
+     * @example
+     * // Create many Sizes
+     * const size = await prisma.size.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sizes and only return the `id`
+     * const sizeWithIdOnly = await prisma.size.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SizeCreateManyAndReturnArgs>(args?: SelectSubset<T, SizeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Size.
+     * @param {SizeDeleteArgs} args - Arguments to delete one Size.
+     * @example
+     * // Delete one Size
+     * const Size = await prisma.size.delete({
+     *   where: {
+     *     // ... filter to delete one Size
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SizeDeleteArgs>(args: SelectSubset<T, SizeDeleteArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Size.
+     * @param {SizeUpdateArgs} args - Arguments to update one Size.
+     * @example
+     * // Update one Size
+     * const size = await prisma.size.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SizeUpdateArgs>(args: SelectSubset<T, SizeUpdateArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Sizes.
+     * @param {SizeDeleteManyArgs} args - Arguments to filter Sizes to delete.
+     * @example
+     * // Delete a few Sizes
+     * const { count } = await prisma.size.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SizeDeleteManyArgs>(args?: SelectSubset<T, SizeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sizes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sizes
+     * const size = await prisma.size.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SizeUpdateManyArgs>(args: SelectSubset<T, SizeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sizes and returns the data updated in the database.
+     * @param {SizeUpdateManyAndReturnArgs} args - Arguments to update many Sizes.
+     * @example
+     * // Update many Sizes
+     * const size = await prisma.size.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sizes and only return the `id`
+     * const sizeWithIdOnly = await prisma.size.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SizeUpdateManyAndReturnArgs>(args: SelectSubset<T, SizeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Size.
+     * @param {SizeUpsertArgs} args - Arguments to update or create a Size.
+     * @example
+     * // Update or create a Size
+     * const size = await prisma.size.upsert({
+     *   create: {
+     *     // ... data to create a Size
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Size we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SizeUpsertArgs>(args: SelectSubset<T, SizeUpsertArgs<ExtArgs>>): Prisma__SizeClient<$Result.GetResult<Prisma.$SizePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Sizes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeCountArgs} args - Arguments to filter Sizes to count.
+     * @example
+     * // Count the number of Sizes
+     * const count = await prisma.size.count({
+     *   where: {
+     *     // ... the filter for the Sizes we want to count
+     *   }
+     * })
+    **/
+    count<T extends SizeCountArgs>(
+      args?: Subset<T, SizeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SizeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Size.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SizeAggregateArgs>(args: Subset<T, SizeAggregateArgs>): Prisma.PrismaPromise<GetSizeAggregateType<T>>
+
+    /**
+     * Group by Size.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SizeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SizeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SizeGroupByArgs['orderBy'] }
+        : { orderBy?: SizeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SizeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSizeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Size model
+   */
+  readonly fields: SizeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Size.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SizeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Size model
+   */
+  interface SizeFieldRefs {
+    readonly id: FieldRef<"Size", 'String'>
+    readonly storeId: FieldRef<"Size", 'String'>
+    readonly name: FieldRef<"Size", 'String'>
+    readonly value: FieldRef<"Size", 'String'>
+    readonly createdAt: FieldRef<"Size", 'DateTime'>
+    readonly updatedAt: FieldRef<"Size", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Size findUnique
+   */
+  export type SizeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter, which Size to fetch.
+     */
+    where: SizeWhereUniqueInput
+  }
+
+  /**
+   * Size findUniqueOrThrow
+   */
+  export type SizeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter, which Size to fetch.
+     */
+    where: SizeWhereUniqueInput
+  }
+
+  /**
+   * Size findFirst
+   */
+  export type SizeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter, which Size to fetch.
+     */
+    where?: SizeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sizes to fetch.
+     */
+    orderBy?: SizeOrderByWithRelationInput | SizeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sizes.
+     */
+    cursor?: SizeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sizes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sizes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sizes.
+     */
+    distinct?: SizeScalarFieldEnum | SizeScalarFieldEnum[]
+  }
+
+  /**
+   * Size findFirstOrThrow
+   */
+  export type SizeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter, which Size to fetch.
+     */
+    where?: SizeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sizes to fetch.
+     */
+    orderBy?: SizeOrderByWithRelationInput | SizeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sizes.
+     */
+    cursor?: SizeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sizes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sizes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sizes.
+     */
+    distinct?: SizeScalarFieldEnum | SizeScalarFieldEnum[]
+  }
+
+  /**
+   * Size findMany
+   */
+  export type SizeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter, which Sizes to fetch.
+     */
+    where?: SizeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sizes to fetch.
+     */
+    orderBy?: SizeOrderByWithRelationInput | SizeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Sizes.
+     */
+    cursor?: SizeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sizes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sizes.
+     */
+    skip?: number
+    distinct?: SizeScalarFieldEnum | SizeScalarFieldEnum[]
+  }
+
+  /**
+   * Size create
+   */
+  export type SizeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Size.
+     */
+    data: XOR<SizeCreateInput, SizeUncheckedCreateInput>
+  }
+
+  /**
+   * Size createMany
+   */
+  export type SizeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Sizes.
+     */
+    data: SizeCreateManyInput | SizeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Size createManyAndReturn
+   */
+  export type SizeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Sizes.
+     */
+    data: SizeCreateManyInput | SizeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Size update
+   */
+  export type SizeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Size.
+     */
+    data: XOR<SizeUpdateInput, SizeUncheckedUpdateInput>
+    /**
+     * Choose, which Size to update.
+     */
+    where: SizeWhereUniqueInput
+  }
+
+  /**
+   * Size updateMany
+   */
+  export type SizeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Sizes.
+     */
+    data: XOR<SizeUpdateManyMutationInput, SizeUncheckedUpdateManyInput>
+    /**
+     * Filter which Sizes to update
+     */
+    where?: SizeWhereInput
+    /**
+     * Limit how many Sizes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Size updateManyAndReturn
+   */
+  export type SizeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * The data used to update Sizes.
+     */
+    data: XOR<SizeUpdateManyMutationInput, SizeUncheckedUpdateManyInput>
+    /**
+     * Filter which Sizes to update
+     */
+    where?: SizeWhereInput
+    /**
+     * Limit how many Sizes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Size upsert
+   */
+  export type SizeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Size to update in case it exists.
+     */
+    where: SizeWhereUniqueInput
+    /**
+     * In case the Size found by the `where` argument doesn't exist, create a new Size with this data.
+     */
+    create: XOR<SizeCreateInput, SizeUncheckedCreateInput>
+    /**
+     * In case the Size was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SizeUpdateInput, SizeUncheckedUpdateInput>
+  }
+
+  /**
+   * Size delete
+   */
+  export type SizeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+    /**
+     * Filter which Size to delete.
+     */
+    where: SizeWhereUniqueInput
+  }
+
+  /**
+   * Size deleteMany
+   */
+  export type SizeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Sizes to delete
+     */
+    where?: SizeWhereInput
+    /**
+     * Limit how many Sizes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Size without action
+   */
+  export type SizeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Size
+     */
+    select?: SizeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Size
+     */
+    omit?: SizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SizeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Color
+   */
+
+  export type AggregateColor = {
+    _count: ColorCountAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  export type ColorMinAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ColorMaxAggregateOutputType = {
+    id: string | null
+    storeId: string | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ColorCountAggregateOutputType = {
+    id: number
+    storeId: number
+    name: number
+    value: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ColorMinAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ColorMaxAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ColorCountAggregateInputType = {
+    id?: true
+    storeId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ColorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Color to aggregate.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Colors
+    **/
+    _count?: true | ColorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ColorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type GetColorAggregateType<T extends ColorAggregateArgs> = {
+        [P in keyof T & keyof AggregateColor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateColor[P]>
+      : GetScalarType<T[P], AggregateColor[P]>
+  }
+
+
+
+
+  export type ColorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorWhereInput
+    orderBy?: ColorOrderByWithAggregationInput | ColorOrderByWithAggregationInput[]
+    by: ColorScalarFieldEnum[] | ColorScalarFieldEnum
+    having?: ColorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ColorCountAggregateInputType | true
+    _min?: ColorMinAggregateInputType
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type ColorGroupByOutputType = {
+    id: string
+    storeId: string
+    name: string
+    value: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ColorCountAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  type GetColorGroupByPayload<T extends ColorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ColorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ColorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ColorGroupByOutputType[P]>
+            : GetScalarType<T[P], ColorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ColorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectScalar = {
+    id?: boolean
+    storeId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "name" | "value" | "createdAt" | "updatedAt", ExtArgs["result"]["color"]>
+  export type ColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type ColorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+  export type ColorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    store?: boolean | StoreDefaultArgs<ExtArgs>
+  }
+
+  export type $ColorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Color"
+    objects: {
+      store: Prisma.$StorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      storeId: string
+      name: string
+      value: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["color"]>
+    composites: {}
+  }
+
+  type ColorGetPayload<S extends boolean | null | undefined | ColorDefaultArgs> = $Result.GetResult<Prisma.$ColorPayload, S>
+
+  type ColorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ColorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ColorCountAggregateInputType | true
+    }
+
+  export interface ColorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Color'], meta: { name: 'Color' } }
+    /**
+     * Find zero or one Color that matches the filter.
+     * @param {ColorFindUniqueArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ColorFindUniqueArgs>(args: SelectSubset<T, ColorFindUniqueArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Color that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ColorFindUniqueOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ColorFindUniqueOrThrowArgs>(args: SelectSubset<T, ColorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ColorFindFirstArgs>(args?: SelectSubset<T, ColorFindFirstArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ColorFindFirstOrThrowArgs>(args?: SelectSubset<T, ColorFindFirstOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Colors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Colors
+     * const colors = await prisma.color.findMany()
+     * 
+     * // Get first 10 Colors
+     * const colors = await prisma.color.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const colorWithIdOnly = await prisma.color.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ColorFindManyArgs>(args?: SelectSubset<T, ColorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Color.
+     * @param {ColorCreateArgs} args - Arguments to create a Color.
+     * @example
+     * // Create one Color
+     * const Color = await prisma.color.create({
+     *   data: {
+     *     // ... data to create a Color
+     *   }
+     * })
+     * 
+     */
+    create<T extends ColorCreateArgs>(args: SelectSubset<T, ColorCreateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Colors.
+     * @param {ColorCreateManyArgs} args - Arguments to create many Colors.
+     * @example
+     * // Create many Colors
+     * const color = await prisma.color.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ColorCreateManyArgs>(args?: SelectSubset<T, ColorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Colors and returns the data saved in the database.
+     * @param {ColorCreateManyAndReturnArgs} args - Arguments to create many Colors.
+     * @example
+     * // Create many Colors
+     * const color = await prisma.color.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Colors and only return the `id`
+     * const colorWithIdOnly = await prisma.color.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ColorCreateManyAndReturnArgs>(args?: SelectSubset<T, ColorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Color.
+     * @param {ColorDeleteArgs} args - Arguments to delete one Color.
+     * @example
+     * // Delete one Color
+     * const Color = await prisma.color.delete({
+     *   where: {
+     *     // ... filter to delete one Color
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ColorDeleteArgs>(args: SelectSubset<T, ColorDeleteArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Color.
+     * @param {ColorUpdateArgs} args - Arguments to update one Color.
+     * @example
+     * // Update one Color
+     * const color = await prisma.color.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ColorUpdateArgs>(args: SelectSubset<T, ColorUpdateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Colors.
+     * @param {ColorDeleteManyArgs} args - Arguments to filter Colors to delete.
+     * @example
+     * // Delete a few Colors
+     * const { count } = await prisma.color.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ColorDeleteManyArgs>(args?: SelectSubset<T, ColorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Colors
+     * const color = await prisma.color.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ColorUpdateManyArgs>(args: SelectSubset<T, ColorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Colors and returns the data updated in the database.
+     * @param {ColorUpdateManyAndReturnArgs} args - Arguments to update many Colors.
+     * @example
+     * // Update many Colors
+     * const color = await prisma.color.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Colors and only return the `id`
+     * const colorWithIdOnly = await prisma.color.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ColorUpdateManyAndReturnArgs>(args: SelectSubset<T, ColorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Color.
+     * @param {ColorUpsertArgs} args - Arguments to update or create a Color.
+     * @example
+     * // Update or create a Color
+     * const color = await prisma.color.upsert({
+     *   create: {
+     *     // ... data to create a Color
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Color we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ColorUpsertArgs>(args: SelectSubset<T, ColorUpsertArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorCountArgs} args - Arguments to filter Colors to count.
+     * @example
+     * // Count the number of Colors
+     * const count = await prisma.color.count({
+     *   where: {
+     *     // ... the filter for the Colors we want to count
+     *   }
+     * })
+    **/
+    count<T extends ColorCountArgs>(
+      args?: Subset<T, ColorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ColorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ColorAggregateArgs>(args: Subset<T, ColorAggregateArgs>): Prisma.PrismaPromise<GetColorAggregateType<T>>
+
+    /**
+     * Group by Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ColorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ColorGroupByArgs['orderBy'] }
+        : { orderBy?: ColorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ColorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetColorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Color model
+   */
+  readonly fields: ColorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Color.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ColorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Color model
+   */
+  interface ColorFieldRefs {
+    readonly id: FieldRef<"Color", 'String'>
+    readonly storeId: FieldRef<"Color", 'String'>
+    readonly name: FieldRef<"Color", 'String'>
+    readonly value: FieldRef<"Color", 'String'>
+    readonly createdAt: FieldRef<"Color", 'DateTime'>
+    readonly updatedAt: FieldRef<"Color", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Color findUnique
+   */
+  export type ColorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findUniqueOrThrow
+   */
+  export type ColorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findFirst
+   */
+  export type ColorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findFirstOrThrow
+   */
+  export type ColorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findMany
+   */
+  export type ColorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Colors to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color create
+   */
+  export type ColorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Color.
+     */
+    data: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+  }
+
+  /**
+   * Color createMany
+   */
+  export type ColorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Colors.
+     */
+    data: ColorCreateManyInput | ColorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Color createManyAndReturn
+   */
+  export type ColorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * The data used to create many Colors.
+     */
+    data: ColorCreateManyInput | ColorCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Color update
+   */
+  export type ColorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Color.
+     */
+    data: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+    /**
+     * Choose, which Color to update.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color updateMany
+   */
+  export type ColorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Colors.
+     */
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyInput>
+    /**
+     * Filter which Colors to update
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color updateManyAndReturn
+   */
+  export type ColorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * The data used to update Colors.
+     */
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyInput>
+    /**
+     * Filter which Colors to update
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Color upsert
+   */
+  export type ColorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Color to update in case it exists.
+     */
+    where: ColorWhereUniqueInput
+    /**
+     * In case the Color found by the `where` argument doesn't exist, create a new Color with this data.
+     */
+    create: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+    /**
+     * In case the Color was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+  }
+
+  /**
+   * Color delete
+   */
+  export type ColorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter which Color to delete.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color deleteMany
+   */
+  export type ColorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Colors to delete
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color without action
+   */
+  export type ColorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4446,6 +6844,30 @@ export namespace Prisma {
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+  export const SizeScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    name: 'name',
+    value: 'value',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SizeScalarFieldEnum = (typeof SizeScalarFieldEnum)[keyof typeof SizeScalarFieldEnum]
+
+
+  export const ColorScalarFieldEnum: {
+    id: 'id',
+    storeId: 'storeId',
+    name: 'name',
+    value: 'value',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ColorScalarFieldEnum = (typeof ColorScalarFieldEnum)[keyof typeof ColorScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4525,6 +6947,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Store"> | Date | string
     billboards?: BillBoardListRelationFilter
     categories?: CategoryListRelationFilter
+    sizes?: SizeListRelationFilter
+    colors?: ColorListRelationFilter
   }
 
   export type StoreOrderByWithRelationInput = {
@@ -4535,6 +6959,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     billboards?: BillBoardOrderByRelationAggregateInput
     categories?: CategoryOrderByRelationAggregateInput
+    sizes?: SizeOrderByRelationAggregateInput
+    colors?: ColorOrderByRelationAggregateInput
   }
 
   export type StoreWhereUniqueInput = Prisma.AtLeast<{
@@ -4548,6 +6974,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Store"> | Date | string
     billboards?: BillBoardListRelationFilter
     categories?: CategoryListRelationFilter
+    sizes?: SizeListRelationFilter
+    colors?: ColorListRelationFilter
   }, "id">
 
   export type StoreOrderByWithAggregationInput = {
@@ -4698,6 +7126,126 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
+  export type SizeWhereInput = {
+    AND?: SizeWhereInput | SizeWhereInput[]
+    OR?: SizeWhereInput[]
+    NOT?: SizeWhereInput | SizeWhereInput[]
+    id?: StringFilter<"Size"> | string
+    storeId?: StringFilter<"Size"> | string
+    name?: StringFilter<"Size"> | string
+    value?: StringFilter<"Size"> | string
+    createdAt?: DateTimeFilter<"Size"> | Date | string
+    updatedAt?: DateTimeFilter<"Size"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type SizeOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type SizeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SizeWhereInput | SizeWhereInput[]
+    OR?: SizeWhereInput[]
+    NOT?: SizeWhereInput | SizeWhereInput[]
+    storeId?: StringFilter<"Size"> | string
+    name?: StringFilter<"Size"> | string
+    value?: StringFilter<"Size"> | string
+    createdAt?: DateTimeFilter<"Size"> | Date | string
+    updatedAt?: DateTimeFilter<"Size"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id">
+
+  export type SizeOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SizeCountOrderByAggregateInput
+    _max?: SizeMaxOrderByAggregateInput
+    _min?: SizeMinOrderByAggregateInput
+  }
+
+  export type SizeScalarWhereWithAggregatesInput = {
+    AND?: SizeScalarWhereWithAggregatesInput | SizeScalarWhereWithAggregatesInput[]
+    OR?: SizeScalarWhereWithAggregatesInput[]
+    NOT?: SizeScalarWhereWithAggregatesInput | SizeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Size"> | string
+    storeId?: StringWithAggregatesFilter<"Size"> | string
+    name?: StringWithAggregatesFilter<"Size"> | string
+    value?: StringWithAggregatesFilter<"Size"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Size"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Size"> | Date | string
+  }
+
+  export type ColorWhereInput = {
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    id?: StringFilter<"Color"> | string
+    storeId?: StringFilter<"Color"> | string
+    name?: StringFilter<"Color"> | string
+    value?: StringFilter<"Color"> | string
+    createdAt?: DateTimeFilter<"Color"> | Date | string
+    updatedAt?: DateTimeFilter<"Color"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }
+
+  export type ColorOrderByWithRelationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    store?: StoreOrderByWithRelationInput
+  }
+
+  export type ColorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    storeId?: StringFilter<"Color"> | string
+    name?: StringFilter<"Color"> | string
+    value?: StringFilter<"Color"> | string
+    createdAt?: DateTimeFilter<"Color"> | Date | string
+    updatedAt?: DateTimeFilter<"Color"> | Date | string
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
+  }, "id">
+
+  export type ColorOrderByWithAggregationInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ColorCountOrderByAggregateInput
+    _max?: ColorMaxOrderByAggregateInput
+    _min?: ColorMinOrderByAggregateInput
+  }
+
+  export type ColorScalarWhereWithAggregatesInput = {
+    AND?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    OR?: ColorScalarWhereWithAggregatesInput[]
+    NOT?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Color"> | string
+    storeId?: StringWithAggregatesFilter<"Color"> | string
+    name?: StringWithAggregatesFilter<"Color"> | string
+    value?: StringWithAggregatesFilter<"Color"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Color"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Color"> | Date | string
+  }
+
   export type StoreCreateInput = {
     id?: string
     name: string
@@ -4706,6 +7254,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     billboards?: BillBoardCreateNestedManyWithoutStoreInput
     categories?: CategoryCreateNestedManyWithoutStoreInput
+    sizes?: SizeCreateNestedManyWithoutStoreInput
+    colors?: ColorCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUncheckedCreateInput = {
@@ -4716,6 +7266,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     billboards?: BillBoardUncheckedCreateNestedManyWithoutStoreInput
     categories?: CategoryUncheckedCreateNestedManyWithoutStoreInput
+    sizes?: SizeUncheckedCreateNestedManyWithoutStoreInput
+    colors?: ColorUncheckedCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUpdateInput = {
@@ -4726,6 +7278,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     billboards?: BillBoardUpdateManyWithoutStoreNestedInput
     categories?: CategoryUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUpdateManyWithoutStoreNestedInput
+    colors?: ColorUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreUncheckedUpdateInput = {
@@ -4736,6 +7290,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     billboards?: BillBoardUncheckedUpdateManyWithoutStoreNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUncheckedUpdateManyWithoutStoreNestedInput
+    colors?: ColorUncheckedUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreCreateManyInput = {
@@ -4889,6 +7445,130 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SizeCreateInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    store: StoreCreateNestedOneWithoutSizesInput
+  }
+
+  export type SizeUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SizeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutSizesNestedInput
+  }
+
+  export type SizeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SizeCreateManyInput = {
+    id?: string
+    storeId: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SizeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SizeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorCreateInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    store: StoreCreateNestedOneWithoutColorsInput
+  }
+
+  export type ColorUncheckedCreateInput = {
+    id?: string
+    storeId: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    store?: StoreUpdateOneRequiredWithoutColorsNestedInput
+  }
+
+  export type ColorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorCreateManyInput = {
+    id?: string
+    storeId: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4927,11 +7607,31 @@ export namespace Prisma {
     none?: CategoryWhereInput
   }
 
+  export type SizeListRelationFilter = {
+    every?: SizeWhereInput
+    some?: SizeWhereInput
+    none?: SizeWhereInput
+  }
+
+  export type ColorListRelationFilter = {
+    every?: ColorWhereInput
+    some?: ColorWhereInput
+    none?: ColorWhereInput
+  }
+
   export type BillBoardOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type CategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SizeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ColorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5055,6 +7755,60 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type SizeCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SizeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SizeMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorCountOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorMinOrderByAggregateInput = {
+    id?: SortOrder
+    storeId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type BillBoardCreateNestedManyWithoutStoreInput = {
     create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
     connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
@@ -5069,6 +7823,20 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
   }
 
+  export type SizeCreateNestedManyWithoutStoreInput = {
+    create?: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput> | SizeCreateWithoutStoreInput[] | SizeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: SizeCreateOrConnectWithoutStoreInput | SizeCreateOrConnectWithoutStoreInput[]
+    createMany?: SizeCreateManyStoreInputEnvelope
+    connect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+  }
+
+  export type ColorCreateNestedManyWithoutStoreInput = {
+    create?: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput> | ColorCreateWithoutStoreInput[] | ColorUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ColorCreateOrConnectWithoutStoreInput | ColorCreateOrConnectWithoutStoreInput[]
+    createMany?: ColorCreateManyStoreInputEnvelope
+    connect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+  }
+
   export type BillBoardUncheckedCreateNestedManyWithoutStoreInput = {
     create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
     connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
@@ -5081,6 +7849,20 @@ export namespace Prisma {
     connectOrCreate?: CategoryCreateOrConnectWithoutStoreInput | CategoryCreateOrConnectWithoutStoreInput[]
     createMany?: CategoryCreateManyStoreInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type SizeUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput> | SizeCreateWithoutStoreInput[] | SizeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: SizeCreateOrConnectWithoutStoreInput | SizeCreateOrConnectWithoutStoreInput[]
+    createMany?: SizeCreateManyStoreInputEnvelope
+    connect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+  }
+
+  export type ColorUncheckedCreateNestedManyWithoutStoreInput = {
+    create?: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput> | ColorCreateWithoutStoreInput[] | ColorUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ColorCreateOrConnectWithoutStoreInput | ColorCreateOrConnectWithoutStoreInput[]
+    createMany?: ColorCreateManyStoreInputEnvelope
+    connect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5119,6 +7901,34 @@ export namespace Prisma {
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
+  export type SizeUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput> | SizeCreateWithoutStoreInput[] | SizeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: SizeCreateOrConnectWithoutStoreInput | SizeCreateOrConnectWithoutStoreInput[]
+    upsert?: SizeUpsertWithWhereUniqueWithoutStoreInput | SizeUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: SizeCreateManyStoreInputEnvelope
+    set?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    disconnect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    delete?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    connect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    update?: SizeUpdateWithWhereUniqueWithoutStoreInput | SizeUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: SizeUpdateManyWithWhereWithoutStoreInput | SizeUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: SizeScalarWhereInput | SizeScalarWhereInput[]
+  }
+
+  export type ColorUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput> | ColorCreateWithoutStoreInput[] | ColorUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ColorCreateOrConnectWithoutStoreInput | ColorCreateOrConnectWithoutStoreInput[]
+    upsert?: ColorUpsertWithWhereUniqueWithoutStoreInput | ColorUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: ColorCreateManyStoreInputEnvelope
+    set?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    disconnect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    delete?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    connect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    update?: ColorUpdateWithWhereUniqueWithoutStoreInput | ColorUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: ColorUpdateManyWithWhereWithoutStoreInput | ColorUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: ColorScalarWhereInput | ColorScalarWhereInput[]
+  }
+
   export type BillBoardUncheckedUpdateManyWithoutStoreNestedInput = {
     create?: XOR<BillBoardCreateWithoutStoreInput, BillBoardUncheckedCreateWithoutStoreInput> | BillBoardCreateWithoutStoreInput[] | BillBoardUncheckedCreateWithoutStoreInput[]
     connectOrCreate?: BillBoardCreateOrConnectWithoutStoreInput | BillBoardCreateOrConnectWithoutStoreInput[]
@@ -5145,6 +7955,34 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutStoreInput | CategoryUpdateWithWhereUniqueWithoutStoreInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutStoreInput | CategoryUpdateManyWithWhereWithoutStoreInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type SizeUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput> | SizeCreateWithoutStoreInput[] | SizeUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: SizeCreateOrConnectWithoutStoreInput | SizeCreateOrConnectWithoutStoreInput[]
+    upsert?: SizeUpsertWithWhereUniqueWithoutStoreInput | SizeUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: SizeCreateManyStoreInputEnvelope
+    set?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    disconnect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    delete?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    connect?: SizeWhereUniqueInput | SizeWhereUniqueInput[]
+    update?: SizeUpdateWithWhereUniqueWithoutStoreInput | SizeUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: SizeUpdateManyWithWhereWithoutStoreInput | SizeUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: SizeScalarWhereInput | SizeScalarWhereInput[]
+  }
+
+  export type ColorUncheckedUpdateManyWithoutStoreNestedInput = {
+    create?: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput> | ColorCreateWithoutStoreInput[] | ColorUncheckedCreateWithoutStoreInput[]
+    connectOrCreate?: ColorCreateOrConnectWithoutStoreInput | ColorCreateOrConnectWithoutStoreInput[]
+    upsert?: ColorUpsertWithWhereUniqueWithoutStoreInput | ColorUpsertWithWhereUniqueWithoutStoreInput[]
+    createMany?: ColorCreateManyStoreInputEnvelope
+    set?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    disconnect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    delete?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    connect?: ColorWhereUniqueInput | ColorWhereUniqueInput[]
+    update?: ColorUpdateWithWhereUniqueWithoutStoreInput | ColorUpdateWithWhereUniqueWithoutStoreInput[]
+    updateMany?: ColorUpdateManyWithWhereWithoutStoreInput | ColorUpdateManyWithWhereWithoutStoreInput[]
+    deleteMany?: ColorScalarWhereInput | ColorScalarWhereInput[]
   }
 
   export type StoreCreateNestedOneWithoutBillboardsInput = {
@@ -5229,6 +8067,34 @@ export namespace Prisma {
     upsert?: BillBoardUpsertWithoutCategoriesInput
     connect?: BillBoardWhereUniqueInput
     update?: XOR<XOR<BillBoardUpdateToOneWithWhereWithoutCategoriesInput, BillBoardUpdateWithoutCategoriesInput>, BillBoardUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type StoreCreateNestedOneWithoutSizesInput = {
+    create?: XOR<StoreCreateWithoutSizesInput, StoreUncheckedCreateWithoutSizesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutSizesInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type StoreUpdateOneRequiredWithoutSizesNestedInput = {
+    create?: XOR<StoreCreateWithoutSizesInput, StoreUncheckedCreateWithoutSizesInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutSizesInput
+    upsert?: StoreUpsertWithoutSizesInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutSizesInput, StoreUpdateWithoutSizesInput>, StoreUncheckedUpdateWithoutSizesInput>
+  }
+
+  export type StoreCreateNestedOneWithoutColorsInput = {
+    create?: XOR<StoreCreateWithoutColorsInput, StoreUncheckedCreateWithoutColorsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutColorsInput
+    connect?: StoreWhereUniqueInput
+  }
+
+  export type StoreUpdateOneRequiredWithoutColorsNestedInput = {
+    create?: XOR<StoreCreateWithoutColorsInput, StoreUncheckedCreateWithoutColorsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutColorsInput
+    upsert?: StoreUpsertWithoutColorsInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutColorsInput, StoreUpdateWithoutColorsInput>, StoreUncheckedUpdateWithoutColorsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5352,6 +8218,58 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SizeCreateWithoutStoreInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SizeUncheckedCreateWithoutStoreInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SizeCreateOrConnectWithoutStoreInput = {
+    where: SizeWhereUniqueInput
+    create: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput>
+  }
+
+  export type SizeCreateManyStoreInputEnvelope = {
+    data: SizeCreateManyStoreInput | SizeCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ColorCreateWithoutStoreInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorUncheckedCreateWithoutStoreInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorCreateOrConnectWithoutStoreInput = {
+    where: ColorWhereUniqueInput
+    create: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput>
+  }
+
+  export type ColorCreateManyStoreInputEnvelope = {
+    data: ColorCreateManyStoreInput | ColorCreateManyStoreInput[]
+    skipDuplicates?: boolean
+  }
+
   export type BillBoardUpsertWithWhereUniqueWithoutStoreInput = {
     where: BillBoardWhereUniqueInput
     update: XOR<BillBoardUpdateWithoutStoreInput, BillBoardUncheckedUpdateWithoutStoreInput>
@@ -5408,6 +8326,62 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Category"> | Date | string
   }
 
+  export type SizeUpsertWithWhereUniqueWithoutStoreInput = {
+    where: SizeWhereUniqueInput
+    update: XOR<SizeUpdateWithoutStoreInput, SizeUncheckedUpdateWithoutStoreInput>
+    create: XOR<SizeCreateWithoutStoreInput, SizeUncheckedCreateWithoutStoreInput>
+  }
+
+  export type SizeUpdateWithWhereUniqueWithoutStoreInput = {
+    where: SizeWhereUniqueInput
+    data: XOR<SizeUpdateWithoutStoreInput, SizeUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type SizeUpdateManyWithWhereWithoutStoreInput = {
+    where: SizeScalarWhereInput
+    data: XOR<SizeUpdateManyMutationInput, SizeUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type SizeScalarWhereInput = {
+    AND?: SizeScalarWhereInput | SizeScalarWhereInput[]
+    OR?: SizeScalarWhereInput[]
+    NOT?: SizeScalarWhereInput | SizeScalarWhereInput[]
+    id?: StringFilter<"Size"> | string
+    storeId?: StringFilter<"Size"> | string
+    name?: StringFilter<"Size"> | string
+    value?: StringFilter<"Size"> | string
+    createdAt?: DateTimeFilter<"Size"> | Date | string
+    updatedAt?: DateTimeFilter<"Size"> | Date | string
+  }
+
+  export type ColorUpsertWithWhereUniqueWithoutStoreInput = {
+    where: ColorWhereUniqueInput
+    update: XOR<ColorUpdateWithoutStoreInput, ColorUncheckedUpdateWithoutStoreInput>
+    create: XOR<ColorCreateWithoutStoreInput, ColorUncheckedCreateWithoutStoreInput>
+  }
+
+  export type ColorUpdateWithWhereUniqueWithoutStoreInput = {
+    where: ColorWhereUniqueInput
+    data: XOR<ColorUpdateWithoutStoreInput, ColorUncheckedUpdateWithoutStoreInput>
+  }
+
+  export type ColorUpdateManyWithWhereWithoutStoreInput = {
+    where: ColorScalarWhereInput
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyWithoutStoreInput>
+  }
+
+  export type ColorScalarWhereInput = {
+    AND?: ColorScalarWhereInput | ColorScalarWhereInput[]
+    OR?: ColorScalarWhereInput[]
+    NOT?: ColorScalarWhereInput | ColorScalarWhereInput[]
+    id?: StringFilter<"Color"> | string
+    storeId?: StringFilter<"Color"> | string
+    name?: StringFilter<"Color"> | string
+    value?: StringFilter<"Color"> | string
+    createdAt?: DateTimeFilter<"Color"> | Date | string
+    updatedAt?: DateTimeFilter<"Color"> | Date | string
+  }
+
   export type StoreCreateWithoutBillboardsInput = {
     id?: string
     name: string
@@ -5415,6 +8389,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoryCreateNestedManyWithoutStoreInput
+    sizes?: SizeCreateNestedManyWithoutStoreInput
+    colors?: ColorCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUncheckedCreateWithoutBillboardsInput = {
@@ -5424,6 +8400,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoryUncheckedCreateNestedManyWithoutStoreInput
+    sizes?: SizeUncheckedCreateNestedManyWithoutStoreInput
+    colors?: ColorUncheckedCreateNestedManyWithoutStoreInput
   }
 
   export type StoreCreateOrConnectWithoutBillboardsInput = {
@@ -5475,6 +8453,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoryUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUpdateManyWithoutStoreNestedInput
+    colors?: ColorUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreUncheckedUpdateWithoutBillboardsInput = {
@@ -5484,6 +8464,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoryUncheckedUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUncheckedUpdateManyWithoutStoreNestedInput
+    colors?: ColorUncheckedUpdateManyWithoutStoreNestedInput
   }
 
   export type CategoryUpsertWithWhereUniqueWithoutBillboardInput = {
@@ -5509,6 +8491,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     billboards?: BillBoardCreateNestedManyWithoutStoreInput
+    sizes?: SizeCreateNestedManyWithoutStoreInput
+    colors?: ColorCreateNestedManyWithoutStoreInput
   }
 
   export type StoreUncheckedCreateWithoutCategoriesInput = {
@@ -5518,6 +8502,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     billboards?: BillBoardUncheckedCreateNestedManyWithoutStoreInput
+    sizes?: SizeUncheckedCreateNestedManyWithoutStoreInput
+    colors?: ColorUncheckedCreateNestedManyWithoutStoreInput
   }
 
   export type StoreCreateOrConnectWithoutCategoriesInput = {
@@ -5566,6 +8552,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     billboards?: BillBoardUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUpdateManyWithoutStoreNestedInput
+    colors?: ColorUpdateManyWithoutStoreNestedInput
   }
 
   export type StoreUncheckedUpdateWithoutCategoriesInput = {
@@ -5575,6 +8563,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     billboards?: BillBoardUncheckedUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUncheckedUpdateManyWithoutStoreNestedInput
+    colors?: ColorUncheckedUpdateManyWithoutStoreNestedInput
   }
 
   export type BillBoardUpsertWithoutCategoriesInput = {
@@ -5606,6 +8596,126 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type StoreCreateWithoutSizesInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    billboards?: BillBoardCreateNestedManyWithoutStoreInput
+    categories?: CategoryCreateNestedManyWithoutStoreInput
+    colors?: ColorCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutSizesInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    billboards?: BillBoardUncheckedCreateNestedManyWithoutStoreInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutStoreInput
+    colors?: ColorUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutSizesInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutSizesInput, StoreUncheckedCreateWithoutSizesInput>
+  }
+
+  export type StoreUpsertWithoutSizesInput = {
+    update: XOR<StoreUpdateWithoutSizesInput, StoreUncheckedUpdateWithoutSizesInput>
+    create: XOR<StoreCreateWithoutSizesInput, StoreUncheckedCreateWithoutSizesInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutSizesInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutSizesInput, StoreUncheckedUpdateWithoutSizesInput>
+  }
+
+  export type StoreUpdateWithoutSizesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUpdateManyWithoutStoreNestedInput
+    categories?: CategoryUpdateManyWithoutStoreNestedInput
+    colors?: ColorUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutSizesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUncheckedUpdateManyWithoutStoreNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutStoreNestedInput
+    colors?: ColorUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreCreateWithoutColorsInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    billboards?: BillBoardCreateNestedManyWithoutStoreInput
+    categories?: CategoryCreateNestedManyWithoutStoreInput
+    sizes?: SizeCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreUncheckedCreateWithoutColorsInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    billboards?: BillBoardUncheckedCreateNestedManyWithoutStoreInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutStoreInput
+    sizes?: SizeUncheckedCreateNestedManyWithoutStoreInput
+  }
+
+  export type StoreCreateOrConnectWithoutColorsInput = {
+    where: StoreWhereUniqueInput
+    create: XOR<StoreCreateWithoutColorsInput, StoreUncheckedCreateWithoutColorsInput>
+  }
+
+  export type StoreUpsertWithoutColorsInput = {
+    update: XOR<StoreUpdateWithoutColorsInput, StoreUncheckedUpdateWithoutColorsInput>
+    create: XOR<StoreCreateWithoutColorsInput, StoreUncheckedCreateWithoutColorsInput>
+    where?: StoreWhereInput
+  }
+
+  export type StoreUpdateToOneWithWhereWithoutColorsInput = {
+    where?: StoreWhereInput
+    data: XOR<StoreUpdateWithoutColorsInput, StoreUncheckedUpdateWithoutColorsInput>
+  }
+
+  export type StoreUpdateWithoutColorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUpdateManyWithoutStoreNestedInput
+    categories?: CategoryUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUpdateManyWithoutStoreNestedInput
+  }
+
+  export type StoreUncheckedUpdateWithoutColorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    billboards?: BillBoardUncheckedUpdateManyWithoutStoreNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutStoreNestedInput
+    sizes?: SizeUncheckedUpdateManyWithoutStoreNestedInput
+  }
+
   export type BillBoardCreateManyStoreInput = {
     id?: string
     label: string
@@ -5618,6 +8728,22 @@ export namespace Prisma {
     id?: string
     billboardId: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SizeCreateManyStoreInput = {
+    id?: string
+    name: string
+    value: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorCreateManyStoreInput = {
+    id?: string
+    name: string
+    value: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5668,6 +8794,54 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     billboardId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SizeUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SizeUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SizeUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUncheckedUpdateWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUncheckedUpdateManyWithoutStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

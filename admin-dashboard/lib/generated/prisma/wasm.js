@@ -146,6 +146,24 @@ exports.Prisma.CategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SizeScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  name: 'name',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ColorScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  name: 'name',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -160,7 +178,9 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   Store: 'Store',
   BillBoard: 'BillBoard',
-  Category: 'Category'
+  Category: 'Category',
+  Size: 'Size',
+  Color: 'Color'
 };
 
 /**

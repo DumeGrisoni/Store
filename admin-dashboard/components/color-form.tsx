@@ -1,13 +1,15 @@
 'use client';
-import { BillBoard, Category } from '@/lib/generated/prisma';
-import React, { useState } from 'react';
-import { Trash } from 'lucide-react';
+import { Color } from '@/lib/generated/prisma';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useParams, useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import { Trash } from 'lucide-react';
 import * as z from 'zod';
+import { ColorPicker, useColor } from 'react-color-palette';
+import 'react-color-palette/css';
 
 import Heading from './ui/heading';
 import { Button } from './ui/button';
@@ -22,67 +24,60 @@ import {
 } from './ui/form';
 import { Input } from './ui/input';
 import AlertModal from './modals/alert-modal';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from './ui/select';
 
-interface CategoryPageProps {
-  initialData: Category | null;
-  billboards: BillBoard[];
+interface ColorPageProps {
+  initialData: Color | null;
 }
 
-type CategoryFormValues = z.infer<typeof formSchema>;
+type ColorFormValues = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
   name: z.string().min(1, {
     message: 'Le titre est requis',
   }),
-  billboardId: z.string().min(1, {
-    message: "l'id du bandeau est requis",
-  }),
+  value: z
+    .string()
+    .min(4, {
+      message: 'la valeur est requise',
+    })
+    .regex(/^#/, {
+      message: 'La valeur doit commencer par # et une valeur hex',
+    }),
 });
 
-const CategoriesForm: React.FC<CategoryPageProps> = ({
-  initialData,
-  billboards,
-}) => {
+const ColorForm: React.FC<ColorPageProps> = ({ initialData }) => {
   const router = useRouter();
   const params = useParams();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [color, setColor] = useColor('#561ecb');
 
   const title = initialData ? 'Modification' : 'Création';
-  const description = initialData
-    ? 'Modifier la catégorie'
-    : 'Créer une catégorie';
-  const toastMessage = initialData ? 'Catégorie mise à jour' : 'Catégorie créé';
+  const description = initialData ? 'Modifier la couleur' : 'Créer une couleur';
+  const toastMessage = initialData ? 'Couleur mise à jour' : 'Couleur créé';
   const action = initialData ? 'Modifier' : 'Créer';
 
-  const form = useForm<CategoryFormValues>({
+  const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: '',
-      billboardId: '',
+      value: '',
     },
   });
 
-  const onSubmit = async (data: CategoryFormValues) => {
+  const onSubmit = async (data: ColorFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `/api/${params.storeId}/categories/${params.categoryId}`,
+          `/api/${params.storeId}/colors/${params.colorId}`,
           data
         );
       } else {
-        await axios.post(`/api/${params.storeId}/categories`, data);
+        await axios.post(`/api/${params.storeId}/colors`, data);
       }
       router.refresh();
-      router.push(`/${params.storeId}/categories`);
+      router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Une erreur s'est produite");
@@ -96,14 +91,12 @@ const CategoriesForm: React.FC<CategoryPageProps> = ({
     try {
       setLoading(true);
 
-      await axios.delete(
-        `/api/${params.storeId}/categories/${params.categoryId}`
-      );
-      router.replace(`/${params.storeId}/categories`);
-      toast.success('Catégorie supprimée');
+      await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
+      router.replace(`/${params.storeId}/colors`);
+      toast.success('Couleur supprimée');
     } catch (error) {
       toast.error(
-        "Assurez-vous d'avoir supprimé toutes les produits de cette catégorie"
+        "Assurez-vous d'avoir supprimé toutes les produits pour cette couleur"
       );
       console.log(error);
     } finally {
@@ -111,6 +104,11 @@ const CategoriesForm: React.FC<CategoryPageProps> = ({
       setOpen(false);
     }
   };
+
+  useEffect(() => {
+    form.setValue('value', color.hex || initialData?.value || '');
+    console.log(form.getValues());
+  }, [color, form, initialData]);
 
   return (
     <div className="flex items-center justify-center flex-col w-full gap-4">
@@ -145,13 +143,9 @@ const CategoriesForm: React.FC<CategoryPageProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Titre</FormLabel>
+                  <FormLabel>Nom de la couleur</FormLabel>
                   <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Titre de la catégorie"
-                      {...field}
-                    />
+                    <Input disabled={loading} placeholder="Nom" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -159,36 +153,31 @@ const CategoriesForm: React.FC<CategoryPageProps> = ({
             />
             <FormField
               control={form.control}
-              name="billboardId"
-              render={({ field }) => (
+              name="value"
+              render={() => (
                 <FormItem>
-                  <FormLabel>Bandeau</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Selectionnez un bandeau"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {billboards.map((billboard) => (
-                        <SelectItem key={billboard.id} value={billboard.id}>
-                          {billboard.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <FormLabel>Valeur</FormLabel>
+                  <FormControl>
+                    {/* <Input
+                      disabled={loading}
+                      placeholder="Valeur"
+                      {...field}
+                    /> */}
+                    <div className="w-[60%]">
+                      <ColorPicker
+                        color={color}
+                        onChange={setColor}
+                        height={150}
+                        hideAlpha
+                        hideInput
+                      />
+                    </div>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <div className="w-[60%]"></div>
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
             {action}
@@ -200,4 +189,4 @@ const CategoriesForm: React.FC<CategoryPageProps> = ({
   );
 };
 
-export default CategoriesForm;
+export default ColorForm;
